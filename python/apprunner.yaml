@@ -11,10 +11,8 @@ service:
       version: 3.11
     command: 
       build: 
-        - cd /python
         - pip install -r requirements.txt
       run: 
-        - cd /python
         - python app.py
   environment: 
     - name: PORT
