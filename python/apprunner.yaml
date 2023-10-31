@@ -1,20 +1,13 @@
-version: 1
-service: 
-  name: flask-app
-  source:
-    type: github
-    repository: https://github.com/pedrofernandes-plank/simple-http.git
-    subdirectory: python
-  build:
-    spec: 
-      name: python
-      version: 3.11
-    command: 
-      build: 
-        - pip install -r requirements.txt
-      run: 
-        - python app.py
-  environment: 
-    - name: PORT
-      value: "8080" # Use 8080 for App Runner
-  port: 8080
+version: 1.0
+runtime: python3 
+build:
+  commands:
+    build: 
+      - cd /python
+      - pip install -r requirements.txt
+run:
+  runtime-version: 3.8.16
+  command: python python/main.py
+  network: 
+    port: 8000
+    env: APP_PORT
